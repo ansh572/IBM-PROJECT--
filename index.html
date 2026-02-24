@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHATPAT FOOD | All-in-One</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        
+        <div class="logo" onclick="location.reload()">Jhatpat <span> Food</span></div>
+        
+        <div class="search-container">
+            <select id="categorySelect" onchange="applyFilters()">
+                <option value="All">All Categories</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Snacks">After-Office</option>
+                <option value="Barbeque">Barbeque</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Desert">Desert</option>
+                <option value="Drinks">Drinks</option>
+            </select>
+            <div class="divider"></div>
+            <input type="text" id="searchInput" placeholder="Search for dishes..." oninput="applyFilters()">
+        </div>
+
+        <div class="nav-right">
+            <span id="userWelcome" style="margin-right: 15px; font-weight: 600; display: none; color: #1c1c1c;"></span>
+            <button id="authBtn" class="auth-btn" onclick="openModal()">Sign Up</button>
+            <div class="cart-btn">Cart (<span id="cartCount">0</span>)</div>
+        </div>
+    </nav>
+    <header class="hero">
+    <div class="hero-text">
+        <div class="pure-veg">
+            <h1>PURE VEG </h1>
+        </div>
+        <div class="hero-categories">
+            <button class="hero-filter-btn" onclick="filterByCategory('All', this)">Popular Dishes</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Breakfast', this)">Breakfast</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Lunch', this)">Lunch</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Snacks', this)">After-Office</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Barbeque', this)">Barbeque</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Dinner', this)">Dinner</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Desert', this)">Desert</button>
+            <button class="hero-filter-btn" onclick="filterByCategory('Drinks', this)">Drinks</button>
+        </div>
+        <br>
+        <br>
+        <br>
+           <h1>Cravings don't wait.</h1>
+           <br>
+           <h4>Freshly prepared meals delivered to your doorstep.</h4>
+
+        <br>
+        <h4>Delivery in 30 minutes</h4>
+    </div>
+</header>
+
+    <main class="container">
+        <h2 id="gridTitle" class="grid-title">Popular Dishes</h2>
+        <div class="dish-grid" id="dishGrid"></div>
+    </main>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Create Account</h2>
+            <form id="authForm" onsubmit="handleAuth(event)">
+                <input type="text" id="userName" placeholder="Full Name" required>
+                <input type="email" id="userEmail" placeholder="Email Address" required>
+                <input type="password" id="userPass" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Continue</button>
+            </form>
+            <p id="toggleText" onclick="toggleAuthMode()">Already have an account? <span>Login</span></p>
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="footer-content">
+        <h3>FoodieBhai</h3>
+        <p>Swad aisa, jo dil jeet le!</p>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-icon insta">
+                <i>📸</i> Instagram
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon fb">
+                <i>📘</i> Facebook
+            </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 FoodieBhai | Made with ❤️ for Foodies
+    </div>
+</footer>
+    <script src="script.js"></script>
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Your Order</h2>
+        <span class="close-sidebar" onclick="toggleCart()">&times;</span>
+    </div>
+    <div id="sidebarItemContainer">
+        </div>
+    <div class="cart-footer">
+        <div class="total-row">
+            <span>Bill Summary:</span>
+            <span id="sidebarTotal">₹0</span>
+        </div>
+        <button class="checkout-btn" onclick="placeOrder()">Place Order</button>
+    </div>
+</div>
+</body>
+</html>
+
+
+
